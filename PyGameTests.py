@@ -15,4 +15,11 @@ while True:
         if event.type == QUIT:
             pygame.quit()
             exit()
+
+    pygame.draw.rect(wn, (165, 42, 42), (0, 400, 640, 80))
+    pygame.draw.rect(wn, (128, 0, 0), (0, 400, 640, 10))
+    pygame.draw.rect(wn, (139, 0, 139), (200, 360, 40, 40))
+    pygame.draw.circle(wn, (46, 139, 87), (280, 380), 20)
+
+
     pygame.display.update()
