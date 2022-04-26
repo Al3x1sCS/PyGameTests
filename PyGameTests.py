@@ -21,5 +21,4 @@ while True:
     pygame.draw.rect(wn, (139, 0, 139), (200, 360, 40, 40))
     pygame.draw.circle(wn, (46, 139, 87), (280, 380), 20)
 
-
     pygame.display.update()
