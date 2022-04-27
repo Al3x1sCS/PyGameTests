@@ -1,24 +1,62 @@
 import pygame
-from pygame.locals import *
-from sys import exit
+from pygame import *
 
 pygame.init()
 
-largura = 640
-altura = 480
+# Mark: Constantes do jogo
 
-wn = pygame.display.set_mode((largura, altura))
-pygame.display.set_caption('PyGameTests')
+# --tema--
+brown = (139, 69, 19)
+black = (0, 0, 0)
+blue = (0, 0, 255)
+darkmagenta = (139, 0, 139)
+carbon = (47, 79, 79)
+green = (0, 100, 00)
+indigo = (75, 0, 130)
+red = (128, 0, 0)
+white = (255, 255, 255)
 
-while True:
+# --tela--
+WIDTH = 450
+HEIGHT = 300
+dimensions = (WIDTH, HEIGHT)
+screen = pygame.display.set_mode(dimensions)
+pygame.display.set_caption('Endlesscape')
+background = carbon
+fps = 60
+font = pygame.font.Font('freesansbold.ttf', 16)
+timer = pygame.time.Clock()
+
+# Mark: Variáveis do Jogo
+score = 0
+player_x = 50
+player_y = 200
+running = True
+y_change = 0
+gravity = 1
+
+# Mark: Loop Principal
+
+while running:
+    timer.tick(fps)
+    screen.fill(background)
+    floor = pygame.draw.rect(screen, white, [0, 220, WIDTH, 5])
+    player = pygame.draw.circle(screen, darkmagenta, [player_x, player_y], 20)
+
     for event in pygame.event.get():
         if event.type == QUIT:
-            pygame.quit()
-            exit()
+            running = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE and y_change == 0:
+                y_change = 18
 
-    pygame.draw.rect(wn, (165, 42, 42), (0, 400, 640, 80))
-    pygame.draw.rect(wn, (128, 0, 0), (0, 400, 640, 10))
-    pygame.draw.rect(wn, (139, 0, 139), (200, 360, 40, 40))
-    pygame.draw.circle(wn, (46, 139, 87), (280, 380), 20)
+    if y_change > 0 or player_y < 200:
+        player_y -= y_change
+        y_change -= gravity
+    if player_y > 200:
+        player_y = 200
+    if player_y == 200 and y_change < 0:
+        y_change = 0
 
-    pygame.display.update()
+    pygame.display.flip()
+pygame.quit()
