@@ -33,6 +33,7 @@ player_x = 50
 player_y = 200
 running = True
 y_change = 0
+x_change = 0
 gravity = 1
 
 # Mark: Loop Principal
@@ -46,10 +47,32 @@ while running:
     for event in pygame.event.get():
         if event.type == QUIT:
             running = False
+        #Teclas A, W, S, D
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE and y_change == 0:
-                y_change = 18
+            if event.key == pygame.K_w and y_change == 0:
+                y_change = 14
+            if event.key == pygame.K_d:
+                x_change = 2
+            if event.key == pygame.K_a:
+                x_change = -2
+            if event.key == pygame.K_s:
+                x_change = 0
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_d:
+                x_change = 0
+            if event.key == pygame.K_a:
+                x_change = 0
+            if event.key == pygame.K_s:
+                x_change = 0
 
+    # X
+    if 0 <= player_x <= 430:
+        player_x += x_change
+    if player_x < 0:
+        player_x = 0
+    if player_x > 430:
+        player_x = 430
+    # Y
     if y_change > 0 or player_y < 200:
         player_y -= y_change
         y_change -= gravity
@@ -59,4 +82,5 @@ while running:
         y_change = 0
 
     pygame.display.flip()
+    
 pygame.quit()
