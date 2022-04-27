@@ -1,5 +1,5 @@
 import pygame
-from pygame.locals import *
+from pygame import *
 from sys import exit
 
 pygame.init()
@@ -7,8 +7,23 @@ pygame.init()
 largura = 640
 altura = 480
 
-wn = pygame.display.set_mode((largura, altura))
+janela = pygame.display.set_mode((largura, altura))
 pygame.display.set_caption('PyGameTests')
+
+# Tema
+
+brown = (139, 69, 19)
+black = (0, 0, 0)
+blue = (0, 0, 255)
+darkmagenta = (139, 0, 139)
+cabon = (47, 79, 79)
+green = (0, 100, 00)
+indigo = (75, 0, 130)
+red = (128, 0, 0)
+white = (255, 255, 255)
+
+
+
 
 while True:
     for event in pygame.event.get():
@@ -16,9 +31,9 @@ while True:
             pygame.quit()
             exit()
 
-    pygame.draw.rect(wn, (165, 42, 42), (0, 400, 640, 80))
-    pygame.draw.rect(wn, (128, 0, 0), (0, 400, 640, 10))
-    pygame.draw.rect(wn, (139, 0, 139), (200, 360, 40, 40))
-    pygame.draw.circle(wn, (46, 139, 87), (280, 380), 20)
+    pygame.draw.rect(janela, brown, (0, 400, 640, 80))
+    pygame.draw.rect(janela, green, (0, 400, 640, 20))
+    pygame.draw.rect(janela, red, (280, 370, 40, 40))
+    pygame.draw.circle(janela, darkmagenta, (200, 390), 20)
 
     pygame.display.update()
