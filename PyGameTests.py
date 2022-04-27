@@ -47,7 +47,7 @@ while running:
     for event in pygame.event.get():
         if event.type == QUIT:
             running = False
-        #Teclas A, W, S, D
+        # Teclas A, W, S, D
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w and y_change == 0:
                 y_change = 14
