@@ -22,9 +22,6 @@ indigo = (75, 0, 130)
 red = (128, 0, 0)
 white = (255, 255, 255)
 
-
-
-
 while True:
     for event in pygame.event.get():
         if event.type == QUIT:
