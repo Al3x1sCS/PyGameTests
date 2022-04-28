@@ -1,26 +1,17 @@
 import pygame
+import Utils.Colors
 from pygame import *
 
 pygame.init()
 
 # Mark: Constantes do jogo
-# --Cores--
-brown = (139, 69, 19)
-black = (0, 0, 0)
-blue = (0, 0, 255)
-darkmagenta = (139, 0, 139)
-carbon = (47, 79, 79)
-green = (0, 100, 00)
-indigo = (75, 0, 130)
-red = (128, 0, 0)
-white = (255, 255, 255)
 # --tela--
 WIDTH = 450
 HEIGHT = 300
 dimensions = (WIDTH, HEIGHT)
 screen = pygame.display.set_mode(dimensions)
 pygame.display.set_caption('Endlesscape')
-background = black
+background = Utils.Colors.black
 fps = 60
 font = pygame.font.Font('freesansbold.ttf', 16)
 timer = pygame.time.Clock()
@@ -39,12 +30,15 @@ gravity = 1
 while running:
     timer.tick(fps)
     screen.fill(background)
-    floor = pygame.draw.rect(screen, white, [0, 220, WIDTH, 5])
-    player = pygame.draw.circle(screen, darkmagenta, [player_x, player_y], 20)
+    floor = pygame.draw.rect(screen, Utils.Colors.white, [0, 220, WIDTH, 5])
+    player = pygame.draw.circle(screen, Utils.Colors.darkmagenta, [player_x, player_y], 20)
     # PARA cada evento no jogo testa se uma tecla está sendo pressionada ou não.
     for event in pygame.event.get():
         if event.type == QUIT:
             running = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                running = False
         # Teclas A, W, S, D
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w and y_change == 0:
