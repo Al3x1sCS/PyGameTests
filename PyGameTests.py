@@ -28,7 +28,7 @@ x_change = 0
 gravity = 1
 obstacles = [300, 450, 600]
 obstacles_speed = 2
-active = True
+active = False
 
 # Mark: Loop Principal
 # Enquanto o jogo estiver rodando
@@ -49,8 +49,15 @@ while running:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 running = False
+        if event.type == pygame.KEYDOWN and not active:
+            if event.key == pygame.K_w or event.key == pygame.K_d or event.key == pygame.K_a:
+                obstacles = [300, 450, 600]
+                player_x = 50
+                score = 0
+                active = True
+
         # Teclas A, W, S, D
-        if event.type == pygame.KEYDOWN:
+        if event.type == pygame.KEYDOWN and active:
             if event.key == pygame.K_w and y_change == 0:
                 y_change = 18
             if event.key == pygame.K_d:
@@ -67,7 +74,7 @@ while running:
                 x_change = 0
             if event.key == pygame.K_s:
                 x_change = 0
-
+    # adiciona velocidade PARA cara Obstaculo no jogo e os coloca de forma randomica
     for i in range(len(obstacles)):
         if active:
             obstacles[i] -= obstacles_speed
