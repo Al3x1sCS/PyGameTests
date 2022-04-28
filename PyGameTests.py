@@ -74,7 +74,7 @@ while running:
                 x_change = 0
             if event.key == pygame.K_s:
                 x_change = 0
-    # adiciona velocidade PARA cara Obstaculo no jogo e os coloca de forma randomica
+    # adiciona velocidade PARA cada Obstaculo no jogo e os coloca de forma randomica
     for i in range(len(obstacles)):
         if active:
             obstacles[i] -= obstacles_speed
