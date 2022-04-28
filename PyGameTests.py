@@ -35,6 +35,8 @@ active = True
 while running:
     timer.tick(fps)
     screen.fill(background)
+    score_text = font.render(f'Score: {score}', True, Utils.Colors.green, Utils.Colors.black)
+    screen.blit(score_text, (180, 20))
     floor = pygame.draw.rect(screen, Utils.Colors.white, [0, 210, WIDTH, 5])
     player = pygame.draw.circle(screen, Utils.Colors.darkmagenta, [player_x, player_y], 10)
     obstacle0 = pygame.draw.rect(screen, Utils.Colors.red, [obstacles[0], 190, 20, 20])
